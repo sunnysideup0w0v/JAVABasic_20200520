@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.javabasic_20200520.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ActivityMainBinding binding;
 
@@ -30,11 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        binding.okBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("메인화면","확인 버튼 클릭.");
-            }
-        });
+//        binding.okBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("메인화면","확인 버튼 클릭.");
+//            }
+//        });
+        binding.okBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Log.d("메인화면","자체적으로 이벤트 코드");
     }
 }
