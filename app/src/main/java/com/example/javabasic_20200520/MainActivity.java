@@ -10,10 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.javabasic_20200520.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
@@ -30,17 +31,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-//        binding.okBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("메인화면","확인 버튼 클릭.");
-//            }
-//        });
-        binding.okBtn.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Log.d("메인화면","자체적으로 이벤트 코드");
+        binding.okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inputMessage = binding.contentEdt.getText().toString();
+                Log.d("적은내용",inputMessage);
+                binding.contentTxt.setText(inputMessage);
+                Toast.makeText(MainActivity.this, "문구를 반영했습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
